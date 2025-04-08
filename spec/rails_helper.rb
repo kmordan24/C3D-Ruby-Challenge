@@ -77,3 +77,6 @@ RSpec.configure do |config|
     end
   end
 end
+
+# annoying this is needed, shouldn't have to be....
+FactoryBot.reload
