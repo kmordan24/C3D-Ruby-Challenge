@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { addGuest, getGuestList } from "../utils";
+import { addGuest, getGuestList, removeGuest } from "../utils";
 
 export const GuestManager = () => {
   const [guests, setGuests] = useState([]);
@@ -46,6 +46,19 @@ export const GuestManager = () => {
     [newGuest],
   );
 
+  const handleRemoveGuest = useCallback(
+    (guestId) => async () => {
+      try {
+        await removeGuest(guestId);
+        const nextGuestList = await getGuestList();
+        setGuests(nextGuestList);
+      } catch (e) {
+        setError("An error occurred while removing the guest.");
+      }
+    },
+    [],
+  );
+
   return (
     <form aria-labelledby="guest-manager-heading" onSubmit={handleAddGuest}>
       {error && <div className="guest-item-error">{error}</div>}
@@ -71,6 +84,13 @@ export const GuestManager = () => {
             disabled
             readOnly
           />
+          <button
+            type="button"
+            onClick={handleRemoveGuest(guest.id)}
+            className="guest-item-remove"
+          >
+            Remove
+          </button>
         </div>
       ))}
       <div className="guest-item">

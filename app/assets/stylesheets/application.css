@@ -152,6 +152,7 @@ input[type="submit"] {
   position: relative;
   display: flex;
   margin-bottom: 0.5rem;
+  width: 50%;
 
   label {
     visibility: hidden;
@@ -165,6 +166,15 @@ input[type="submit"] {
   input {
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
+  }
+
+  button {
+    flex: 1 0 auto;
+    width: 100px;
+  }
+
+  .guest-item-remove {
+    background-color: #3A3B3C;
   }
 }
 

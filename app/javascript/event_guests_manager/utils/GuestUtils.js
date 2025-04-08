@@ -29,3 +29,20 @@ export const addGuest = async ({ name, email }) => {
     throw new Error("Failed to add guest");
   }
 };
+
+export const removeGuest = async (guestId) => {
+  try {
+    const response = await fetch(
+      `${window.location.pathname}/guests/${guestId}`,
+      {
+        method: "DELETE",
+      },
+    );
+    if (!response.ok) {
+      throw new Error("Failed to remove guest");
+    }
+  } catch (error) {
+    console.error("Error removing guest:", error);
+    throw new Error("Failed to remove guest");
+  }
+};
