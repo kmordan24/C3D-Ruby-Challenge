@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Events Manager</title>
+    <title><%= dynamic_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,9 +12,25 @@
 
   <body>
     <header>
-      <h1><%= link_to "Events Manager", root_path %></h1>
+      <div class="navigation_title">
+        <h1><%= navigation_title %></h1>
+        <div class="navigation-dropdown">
+          <label for="resource-select">Go to:</label>
+          <select id="resource-select" onchange="if (this.value) window.location.href=this.value;">
+            <option value="" disabled selected>Select a resource</option>
+            <option value="<%= places_path %>" <%= 'disabled' if controller_name == 'places' %>>Places</option>
+            <option value="<%= events_path %>" <%= 'disabled' if controller_name == 'events' %>>Events</option>
+          </select>
+        </div>
+      </div>
       <nav>
-        <%= link_to "Create an Event", new_event_path %>
+        <% if controller_name == "events" %>
+          <%= link_to "Create an Event", new_event_path %>
+        <% elsif controller_name == "places" %>
+          <%= link_to "Create a Place", new_place_path %>
+        <% else %>
+          <%= link_to "Home", root_path %>
+        <% end %>
       </nav>
     </header>
 
