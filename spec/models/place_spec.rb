@@ -10,4 +10,8 @@ RSpec.describe Place, type: :model do
       expect(event.errors[:name]).to include("can't be blank")
     end
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:events).dependent(:destroy) }
+  end
 end

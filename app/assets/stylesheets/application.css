@@ -75,6 +75,18 @@ input[type="submit"] {
   font-size: 1rem;
 }
 
+button:disabled {
+    background-color: lightgray;
+    color: darkgray;
+}
+
+select {
+  border: 2px solid darkgray;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
 .event__actions .button_to {
   display: inline;
 }
@@ -181,4 +193,18 @@ input[type="submit"] {
 .guest-item-error {
   color: red;
   margin-bottom: 1rem;
+}
+
+.navigation_title {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-dropdown {
+  margin-left: 2rem;
+
+  select {
+    outline-color: lightblue;
+    border: 2px solid darkblue;
+  }
 }

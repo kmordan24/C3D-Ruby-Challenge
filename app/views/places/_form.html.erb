@@ -1,0 +1,13 @@
+<%= form_with model: place, class: "form" do |form| %>
+  <div class="form-row">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% if place.errors[:name].any? %>
+      <p class="form-row__error">
+        <%= place.errors.where(:name).map(&:full_message).to_sentence %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
