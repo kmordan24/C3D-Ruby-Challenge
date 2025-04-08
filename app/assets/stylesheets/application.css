@@ -147,3 +147,28 @@ input[type="submit"] {
     .event__dates__date {
       font-weight: bold;
     }
+
+.guest-item {
+  position: relative;
+  display: flex;
+  margin-bottom: 0.5rem;
+
+  label {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.guest-item-error {
+  color: red;
+  margin-bottom: 1rem;
+}
