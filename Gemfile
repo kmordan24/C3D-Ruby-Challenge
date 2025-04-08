@@ -50,6 +50,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
