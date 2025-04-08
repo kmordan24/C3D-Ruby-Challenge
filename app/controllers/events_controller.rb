@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -14,7 +16,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to @event, notice: "Event created"
+      redirect_to @event, notice: 'Event created'
     else
       render :new
     end
@@ -27,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to @event, notice: "Event updated"
+      redirect_to @event, notice: 'Event updated'
     else
       render :edit
     end
@@ -36,7 +38,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path, notice: "Event deleted"
+    redirect_to events_path, notice: 'Event deleted'
   end
 
   private
