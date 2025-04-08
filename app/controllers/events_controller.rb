@@ -2,7 +2,9 @@
 
 class EventsController < ApplicationController
   def index
-    @events = Event.page(params[:page]).per(8)
+    sort_column = safe_sort_column
+    sort_direction = safe_sort_direction
+    @events = Event.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show
@@ -45,5 +47,13 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :description, :place_id, :starts_at, :ends_at)
+  end
+
+  def safe_sort_column
+    %w[name starts_at].include?(params[:sort]) ? params[:sort] : 'starts_at'
+  end
+
+  def safe_sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end
