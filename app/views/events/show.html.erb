@@ -15,7 +15,7 @@
 
   <div class="event__actions">
     <%= link_to "Edit", edit_event_path(@event), class: "button" %>
-    <%= button_to "Delete", event_path(@event), class: "button", method: :delete, confirm: "Are you sure?", disabled: @event.has_guests? %>
+    <%= button_to "Delete", event_path(@event), class: "button", method: :delete, confirm: "Are you sure?" %>
   </div>
 </section>
 

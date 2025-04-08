@@ -12,8 +12,4 @@ class Event < ApplicationRecord
   def guest_count
     guests.count
   end
-
-  def has_guests?
-    guests.exists?
-  end
 end
