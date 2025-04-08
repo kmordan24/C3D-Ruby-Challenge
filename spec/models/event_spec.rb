@@ -22,4 +22,9 @@ RSpec.describe Event, type: :model do
       expect(event.errors[:ends_at]).to include("can't be blank")
     end
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:place) }
+    it { is_expected.to have_many(:guests).dependent(:destroy) }
+  end
 end
