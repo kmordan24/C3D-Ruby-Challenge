@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class GuestsController < ApplicationController
+  # OBVIOUSLY this would only ever be used for localhost purposes only
+  protect_from_forgery with: :null_session
   def index
-    @guests = Guest.all
+    @guests = Guest.where(event_id: params[:event_id])
     render json: @guests, status: :ok
   end
 
@@ -15,6 +17,7 @@ class GuestsController < ApplicationController
     end
   end
 
+  # Note - not used in the UI currently (but this is what it could be if webapp needs to edit guests)
   def update
     @guest = Guest.find(params[:id])
     if @guest.update(guest_params)
