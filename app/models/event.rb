@@ -8,4 +8,8 @@ class Event < ApplicationRecord
   validates :ends_at, presence: true
 
   has_many :guests, dependent: :destroy
+
+  def guest_count
+    guests.count
+  end
 end
